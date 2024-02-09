@@ -1,12 +1,30 @@
-on: 
+on:
     push:
         branches: [master]
     
 
 jobs:
     build:
-        runs-on: windows-latest
+        runs-on: ck     
+        
+        
         steps:
-          - run: node --version
-          - run: npm  --version
+            
+            - uses: actions/checkout@v4
+            
+            
+
+            
+            - name: Log in to Docker Hub
+              run: |
+                echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+                docker image build -t chethan2804/kumar:tagname .
+                docker push chethan2804/kumar:tagname
                 
+                
+            - name: run ansible playbook
+              if: github.ref == 'refs/heads/master'
+              env:
+                password: ${{ secrets.DOCKER_PASSWORD }}
+              run: |
+                ansible-playbook ansi.yml -i abc.txt --extra-vars "password=$password"
