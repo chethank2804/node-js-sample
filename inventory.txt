@@ -1,2 +1,2 @@
 [deploy]
-3.81.33.144 ansible_ssh_pass='server123'  ansible_ssh_port=22  ANSIBLE_HOST_KEY_CHECKING=False
+3.81.33.144 ansible_ssh_pass='server123'  ansible_ssh_port=22  export ANSIBLE_HOST_KEY_CHECKING=False && ansible-playbook -i
