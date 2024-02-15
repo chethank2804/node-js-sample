@@ -14,4 +14,4 @@
       shell: docker pull chethan2804/kumar:tagname   
 
     - name: docker run
-      shell: docker run --init -d  chethan2804/kumar:tagname
+      shell: docker run --init -d -p 80:5000 chethan2804/kumar:tagname

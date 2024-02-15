@@ -5,7 +5,9 @@ on:
 
 jobs:
   build:
-      runs-on: dk
+      runs-on: 
+        -  self-hosted
+        -  dk
       
       
       steps:
