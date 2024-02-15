@@ -27,4 +27,4 @@ jobs:
             env:
               password: ${{ secrets.DOCKER_PASSWORD }}
             run: |
-              ansible-playbook ansible.yml -i inventory.txt --extra-vars "password=$password"
+              ansible-playbook ansible.yml -i inventory.INI --extra-vars "password=$password"
