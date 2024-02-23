@@ -1,2 +1,2 @@
 [deploy]
-52.66.214.91 ansible_ssh_user=ubuntu ansible_ssh_pass='server123' ansible_ssh_port=22 ANSIBLE_HOST_KEY_CHECKING=False
+ 54.162.151.254 ansible_ssh_user=ubuntu ansible_ssh_pass='server123' ansible_ssh_port=22 ANSIBLE_HOST_KEY_CHECKING=False
