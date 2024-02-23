@@ -4,14 +4,14 @@
   become: no
   gather_facts: no
   vars:
-    docker_registry_password: "chethan28@"
+    docker_registry_password: "manu@9148"
 
   tasks:
     - name: Login to docker registry
       shell: echo "{{ docker_registry_password }}" | docker login -u chethan2804 --password-stdin https://index.docker.io/v1/
     
     - name: pull image from docker hub
-      shell: docker pull chethan2804/kumar:tagname   
+      shell: docker pull manu100/aws:tagname   
 
     - name: docker run
-      shell: docker run --init -d -p 80:5000 chethan2804/kumar:tagname
+      shell: docker run --init -d -p 80:5000 manu100/aws:tagname
