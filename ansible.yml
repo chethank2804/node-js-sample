@@ -14,4 +14,4 @@
       shell: docker pull manu100/aws:tagname   
 
     - name: docker run
-      shell: docker run --init -d -p 80:5000 manu100/aws:tagname
+      shell: docker run --init   manu100/aws:tagname
