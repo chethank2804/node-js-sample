@@ -1,32 +1,26 @@
 on:
   push:
-      branches: [master]
-  
+    branches:
+      - master
 
 jobs:
   build:
-      runs-on: 
-        -  self-hosted
-        -  chris
+    runs-on: self-hosted 
+      -      chris # Assuming you have a self-hosted runner named "chris"
 
-        
-      steps:
-          
-          - uses: actions/checkout@v4
-          
-          
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-          
-          - name: Log in to Docker Hub
-            run: |
-              echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-              docker image build -t chethan2804/kumar:tagname .
-              docker push chethan2804/kumar:tagname
-              
-              
-          - name: run ansible playbook
-            if: github.ref == 'refs/heads/master'
-            env:
-              password: ${{ secrets.DOCKER_PASSWORD }}
-            run: |
-              ansible-playbook ansible.yml -i inventory.txt --extra-vars "password=$password"
+      - name: Log in to Docker Hub
+        run: |
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+          docker image build -t chethan2804/kumar:tagname .
+          docker push chethan2804/kumar:tagname
+
+      - name: Run Ansible playbook
+        if: github.ref == 'refs/heads/master'
+        env:
+          password: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          ansible-playbook ansible.yml -i inventory.txt --extra-vars "password=$password"
