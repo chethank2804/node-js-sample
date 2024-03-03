@@ -5,8 +5,9 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted 
-      -      chris # Assuming you have a self-hosted runner named "chris"
+    runs-on: 
+      -      self-hosted 
+      -      chris 
 
     steps:
       - name: Checkout code
